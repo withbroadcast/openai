@@ -1,6 +1,6 @@
 # Openai
 
-**TODO: Add description**
+Elixir client for OpenAI.
 
 ## Installation
 
@@ -15,7 +15,19 @@ def deps do
 end
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/openai](https://hexdocs.pm/openai).
+## Configuration
 
+You can configure the client via `config.exs`:
+
+```elixir
+config :openai,
+  api_key: "your-api-key",
+  organization: "your-organization"
+```
+
+You can also specify the configuration options directly when initially a client. This will override any global config options.
+
+
+```elixir
+Openai.Client.new(api_key: "your-api-key", organization: "your-organization")
+```
