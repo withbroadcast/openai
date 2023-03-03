@@ -19,9 +19,9 @@ defmodule OpenAI.Files do
   end
 
   @type upload_params :: %{
-    required(:file) => String.t(),
-    required(:purpose) => String.t()
-  }
+          required(:file) => String.t(),
+          required(:purpose) => String.t()
+        }
 
   @doc """
   Upload a file that contains document(s) to be used across various endpoints/features.

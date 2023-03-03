@@ -2,7 +2,7 @@ defmodule OpenAI.ImagesTest do
   use OpenAI.Case
 
   @response %{
-    "created" => 1589478378,
+    "created" => 1_589_478_378,
     "data" => [
       %{
         "url" => "https://openai.com/images/some-image.png"
@@ -13,7 +13,6 @@ defmodule OpenAI.ImagesTest do
     ]
   }
 
-
   describe "create/3" do
     test "creates an image", %{bypass: bypass, client: client} do
       Bypass.expect_once(bypass, "POST", "/v1/images/generations", fn conn ->
@@ -22,11 +21,12 @@ defmodule OpenAI.ImagesTest do
         |> Plug.Conn.resp(200, Jason.encode!(@response))
       end)
 
-      {:ok, resp} = OpenAI.Images.create(client, %{
-        prompt: "A cute baby sea otter",
-        n: 2,
-        size: "1024x1024"
-      })
+      {:ok, resp} =
+        OpenAI.Images.create(client, %{
+          prompt: "A cute baby sea otter",
+          n: 2,
+          size: "1024x1024"
+        })
 
       assert resp == @response
     end
@@ -40,13 +40,14 @@ defmodule OpenAI.ImagesTest do
         |> Plug.Conn.resp(200, Jason.encode!(@response))
       end)
 
-      {:ok, resp} = OpenAI.Images.create_edit(client, %{
-        prompt: "A cute baby sea otter wearing a beret",
-        image: "@otter.png",
-        mask: "@mask.png",
-        n: 2,
-        size: "1024x1024"
-      })
+      {:ok, resp} =
+        OpenAI.Images.create_edit(client, %{
+          prompt: "A cute baby sea otter wearing a beret",
+          image: "@otter.png",
+          mask: "@mask.png",
+          n: 2,
+          size: "1024x1024"
+        })
 
       assert resp == @response
     end
@@ -60,11 +61,12 @@ defmodule OpenAI.ImagesTest do
         |> Plug.Conn.resp(200, Jason.encode!(@response))
       end)
 
-      {:ok, resp} = OpenAI.Images.create_variation(client, %{
-        image: "@otter.png",
-        n: 2,
-        size: "1024x1024"
-      })
+      {:ok, resp} =
+        OpenAI.Images.create_variation(client, %{
+          image: "@otter.png",
+          n: 2,
+          size: "1024x1024"
+        })
 
       assert resp == @response
     end

@@ -7,7 +7,7 @@ defmodule OpenAI.FilesTest do
         "id" => "file-ccdDZrC3iZVNiQVeEA6Z66wf",
         "object" => "file",
         "bytes" => 175,
-        "created_at" => 1613677385,
+        "created_at" => 1_613_677_385,
         "filename" => "train.jsonl",
         "purpose" => "search"
       },
@@ -15,7 +15,7 @@ defmodule OpenAI.FilesTest do
         "id" => "file-XjGxS3KTG0uNmNOK362iJua3",
         "object" => "file",
         "bytes" => 140,
-        "created_at" => 1613779121,
+        "created_at" => 1_613_779_121,
         "filename" => "puppy.jsonl",
         "purpose" => "search"
       }
@@ -41,7 +41,7 @@ defmodule OpenAI.FilesTest do
     "id" => "file-XjGxS3KTG0uNmNOK362iJua3",
     "object" => "file",
     "bytes" => 140,
-    "created_at" => 1613779121,
+    "created_at" => 1_613_779_121,
     "filename" => "mydata.jsonl",
     "purpose" => "fine-tune"
   }
@@ -84,7 +84,7 @@ defmodule OpenAI.FilesTest do
     "id" => "file-XjGxS3KTG0uNmNOK362iJua3",
     "object" => "file",
     "bytes" => 140,
-    "created_at" => 1613779657,
+    "created_at" => 1_613_779_657,
     "filename" => "mydata.jsonl",
     "purpose" => "fine-tune"
   }

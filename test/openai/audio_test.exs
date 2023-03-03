@@ -4,7 +4,8 @@ defmodule OpenAI.AudioTest do
   @model "whisper-1"
 
   @transcription_response %{
-    "text" => "Imagine the wildest idea that you've ever had, and you're curious about how it might scale to something that's a 100, a 1,000 times bigger. This is a place where you can get to do that."
+    "text" =>
+      "Imagine the wildest idea that you've ever had, and you're curious about how it might scale to something that's a 100, a 1,000 times bigger. This is a place where you can get to do that."
   }
 
   @translation_response %{
@@ -19,10 +20,11 @@ defmodule OpenAI.AudioTest do
         |> Plug.Conn.resp(200, Jason.encode!(@transcription_response))
       end)
 
-      {:ok, resp} = OpenAI.Audio.create_transcription(client, %{
-        model: @model,
-        file: "audio.mp3"
-      })
+      {:ok, resp} =
+        OpenAI.Audio.create_transcription(client, %{
+          model: @model,
+          file: "audio.mp3"
+        })
 
       assert resp == @transcription_response
     end
@@ -36,10 +38,11 @@ defmodule OpenAI.AudioTest do
         |> Plug.Conn.resp(200, Jason.encode!(@translation_response))
       end)
 
-      {:ok, resp} = OpenAI.Audio.create_translation(client, %{
-        model: @model,
-        file: "german.m4a"
-      })
+      {:ok, resp} =
+        OpenAI.Audio.create_translation(client, %{
+          model: @model,
+          file: "german.m4a"
+        })
 
       assert resp == @translation_response
     end

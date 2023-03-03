@@ -8,13 +8,13 @@ defmodule OpenAI.Edits do
   alias OpenAI.Client
 
   @type create_params :: %{
-    required(:model) => String.t(),
-    optional(:input) => String.t(),
-    required(:instruction) => String.t(),
-    optional(:n) => integer(),
-    optional(:temperature) => float(),
-    optional(:top_p) => float()
-  }
+          required(:model) => String.t(),
+          optional(:input) => String.t(),
+          required(:instruction) => String.t(),
+          optional(:n) => integer(),
+          optional(:temperature) => float(),
+          optional(:top_p) => float()
+        }
 
   @doc """
   Creates a new edit for the provided input, instruction, and parameters.

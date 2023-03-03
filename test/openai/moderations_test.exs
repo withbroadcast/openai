@@ -31,7 +31,6 @@ defmodule OpenAI.ModerationsTest do
     ]
   }
 
-
   describe "create/3" do
     test "creates a moderation", %{bypass: bypass, client: client} do
       Bypass.expect_once(bypass, "POST", "/v1/moderations", fn conn ->
@@ -40,9 +39,10 @@ defmodule OpenAI.ModerationsTest do
         |> Plug.Conn.resp(200, Jason.encode!(@create_response))
       end)
 
-      {:ok, resp} = OpenAI.Moderations.create(client, %{
-        input: "I want to kill them."
-      })
+      {:ok, resp} =
+        OpenAI.Moderations.create(client, %{
+          input: "I want to kill them."
+        })
 
       assert resp == @create_response
     end

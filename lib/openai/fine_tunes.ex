@@ -10,19 +10,19 @@ defmodule OpenAI.FineTunes do
   alias OpenAI.Client
 
   @type create_params :: %{
-    required(:training_file) => String.t(),
-    optional(:validation_file) => String.t(),
-    optional(:model) => String.t(),
-    optional(:n_epochs) => integer(),
-    optional(:batch_size) => integer(),
-    optional(:learning_rate_multiplier) => float(),
-    optional(:prompt_loss_weight) => float(),
-    optional(:compute_classification_metrics) => boolean(),
-    optional(:classification_n_classes) => integer(),
-    optional(:classification_positive_class) => String.t(),
-    optional(:classification_betas) => integer() | float(),
-    optional(:suffix) => String.t()
-  }
+          required(:training_file) => String.t(),
+          optional(:validation_file) => String.t(),
+          optional(:model) => String.t(),
+          optional(:n_epochs) => integer(),
+          optional(:batch_size) => integer(),
+          optional(:learning_rate_multiplier) => float(),
+          optional(:prompt_loss_weight) => float(),
+          optional(:compute_classification_metrics) => boolean(),
+          optional(:classification_n_classes) => integer(),
+          optional(:classification_positive_class) => String.t(),
+          optional(:classification_betas) => integer() | float(),
+          optional(:suffix) => String.t()
+        }
 
   @doc """
   Creates a job that fine-tunes a specified model from a given dataset.

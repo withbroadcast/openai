@@ -11,7 +11,7 @@ defmodule OpenAI.EmbeddingsTest do
         "embedding" => [
           0.000
         ],
-        "index" => 0,
+        "index" => 0
       }
     ],
     "model" => @model,
@@ -29,10 +29,11 @@ defmodule OpenAI.EmbeddingsTest do
         |> Plug.Conn.resp(200, Jason.encode!(@create_embedding_response))
       end)
 
-      {:ok, resp} = OpenAI.Embeddings.create(client, %{
-        model: "text-embedding-ada-002",
-        input: "The food was delicious and the waiter..."
-      })
+      {:ok, resp} =
+        OpenAI.Embeddings.create(client, %{
+          model: "text-embedding-ada-002",
+          input: "The food was delicious and the waiter..."
+        })
 
       assert resp == @create_embedding_response
     end

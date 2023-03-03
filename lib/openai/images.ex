@@ -10,12 +10,12 @@ defmodule OpenAI.Images do
   alias OpenAI.Client
 
   @type create_params :: %{
-    required(:prompt) => String.t(),
-    optional(:n) => integer(),
-    optional(:size) => String.t(),
-    optional(:response_format) => String.t(),
-    optional(:user) => String.t()
-  }
+          required(:prompt) => String.t(),
+          optional(:n) => integer(),
+          optional(:size) => String.t(),
+          optional(:response_format) => String.t(),
+          optional(:user) => String.t()
+        }
 
   @doc """
   Creates an image given a prompt.
@@ -28,14 +28,14 @@ defmodule OpenAI.Images do
   end
 
   @type create_edit_params :: %{
-    required(:image) => String.t(),
-    optional(:mask) => String.t(),
-    required(:prompt) => String.t(),
-    optional(:n) => integer(),
-    optional(:size) => String.t(),
-    optional(:response_format) => String.t(),
-    optional(:user) => String.t()
-  }
+          required(:image) => String.t(),
+          optional(:mask) => String.t(),
+          required(:prompt) => String.t(),
+          optional(:n) => integer(),
+          optional(:size) => String.t(),
+          optional(:response_format) => String.t(),
+          optional(:user) => String.t()
+        }
 
   @doc """
   Creates an edited or extended image given an original image and a prompt.
@@ -48,12 +48,12 @@ defmodule OpenAI.Images do
   end
 
   @type create_variation_params :: %{
-    required(:image) => String.t(),
-    optional(:n) => integer(),
-    optional(:size) => String.t(),
-    optional(:response_format) => String.t(),
-    optional(:user) => String.t()
-  }
+          required(:image) => String.t(),
+          optional(:n) => integer(),
+          optional(:size) => String.t(),
+          optional(:response_format) => String.t(),
+          optional(:user) => String.t()
+        }
 
   @doc """
   Creates a variation of a given image.

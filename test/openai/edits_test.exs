@@ -4,11 +4,11 @@ defmodule OpenAI.EditsTest do
   @model "text-davinci-edit-001"
   @create_response %{
     "object" => "edit",
-    "created" => 1589478378,
+    "created" => 1_589_478_378,
     "choices" => [
       %{
         "text" => "What day of the week is it?",
-        "index" => 0,
+        "index" => 0
       }
     ],
     "usage" => %{
@@ -26,11 +26,12 @@ defmodule OpenAI.EditsTest do
         |> Plug.Conn.resp(200, Jason.encode!(@create_response))
       end)
 
-      {:ok, resp} = OpenAI.Edits.create(client, %{
-        model: @model,
-        input: "What day of the wek is it?",
-        instructions: "Fix the spelling mistakes"
-      })
+      {:ok, resp} =
+        OpenAI.Edits.create(client, %{
+          model: @model,
+          input: "What day of the wek is it?",
+          instructions: "Fix the spelling mistakes"
+        })
 
       assert resp == @create_response
     end

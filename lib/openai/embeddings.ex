@@ -10,10 +10,10 @@ defmodule OpenAI.Embeddings do
   alias OpenAI.Client
 
   @type create_params :: %{
-    required(:model) => String.t(),
-    required(:input) => String.t() | [String.t()],
-    optional(:user) => String.t()
-  }
+          required(:model) => String.t(),
+          required(:input) => String.t() | [String.t()],
+          optional(:user) => String.t()
+        }
 
   @doc """
   Creates an embedding vector representing the input text.

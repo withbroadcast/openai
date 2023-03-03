@@ -13,11 +13,12 @@ defmodule OpenAI.Case do
     bypass = Bypass.open()
     url = "http://localhost:#{bypass.port}"
 
-    client = OpenAI.Client.new([
-      base_url: url,
-      api_key: "some-api-key",
-      organization: "some-organization"
-    ])
+    client =
+      OpenAI.Client.new(
+        base_url: url,
+        api_key: "some-api-key",
+        organization: "some-organization"
+      )
 
     {:ok, bypass: bypass, client: client}
   end

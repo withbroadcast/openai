@@ -9,9 +9,9 @@ defmodule OpenAI.Client do
   @type result :: Tesla.Env.result()
 
   @type new_client_opt ::
-    {:api_key, String.t()} |
-    {:base_url, String.t()} |
-    {:organization, String.t()}
+          {:api_key, String.t()}
+          | {:base_url, String.t()}
+          | {:organization, String.t()}
 
   @type new_client_opts :: [new_client_opt]
 
@@ -36,7 +36,9 @@ defmodule OpenAI.Client do
       {Tesla.Middleware.Headers, build_headers(api_key, organization)}
     ]
 
-    Tesla.client(middleware)
+    adapter = {Tesla.Adapter.Hackney, [recv_timeout: 30_000]}
+
+    Tesla.client(middleware, adapter)
   end
 
   defp fetch_config!(key, opts) do

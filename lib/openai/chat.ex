@@ -8,24 +8,24 @@ defmodule OpenAI.Chat do
   alias OpenAI.Client
 
   @type message :: %{
-    required(:role) => String.t(),
-    required(:content) => String.t()
-  }
+          required(:role) => String.t(),
+          required(:content) => String.t()
+        }
 
   @type create_completion_params :: %{
-    required(:model) => String.t(),
-    required(:messages) => [message()],
-    optional(:temperature) => float(),
-    optional(:top_p) => float(),
-    optional(:n) => integer(),
-    optional(:stream) => boolean(),
-    optional(:stop) => String.t() | [String.t()],
-    optional(:max_tokens) => integer(),
-    optional(:presence_penalty) => float(),
-    optional(:frequency_penalty) => float(),
-    optional(:logit_bias) => %{String.t() => float()},
-    optional(:user) => String.t()
-  }
+          required(:model) => String.t(),
+          required(:messages) => [message()],
+          optional(:temperature) => float(),
+          optional(:top_p) => float(),
+          optional(:n) => integer(),
+          optional(:stream) => boolean(),
+          optional(:stop) => String.t() | [String.t()],
+          optional(:max_tokens) => integer(),
+          optional(:presence_penalty) => float(),
+          optional(:frequency_penalty) => float(),
+          optional(:logit_bias) => %{String.t() => float()},
+          optional(:user) => String.t()
+        }
 
   @doc """
   Creates a completion for the chat message

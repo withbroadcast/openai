@@ -10,9 +10,9 @@ defmodule OpenAI.Moderations do
   alias OpenAI.Client
 
   @type create_params :: %{
-    required(:input) => String.t() | [String.t()],
-    optional(:model) => String.t()
-  }
+          required(:input) => String.t() | [String.t()],
+          optional(:model) => String.t()
+        }
 
   @doc """
   Classifies if text violates OpenAI's Content Policy

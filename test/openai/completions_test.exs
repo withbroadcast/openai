@@ -5,7 +5,7 @@ defmodule OpenAI.CompletionsTest do
   @create_completion_response %{
     "id" => "cmpl-uqkvlQyYK7bGYrRHQ0eXlWi7",
     "object" => "text_completion",
-    "created" => 1589478378,
+    "created" => 1_589_478_378,
     "model" => @model,
     "choices" => [
       %{
@@ -30,17 +30,18 @@ defmodule OpenAI.CompletionsTest do
         |> Plug.Conn.resp(200, Jason.encode!(@create_completion_response))
       end)
 
-      {:ok, resp} = OpenAI.Completions.create(client, %{
-        model: @model,
-        prompt: "Say this is a test",
-        max_tokens: 7,
-        temperature: 0,
-        top_p: 1,
-        n: 1,
-        stream: false,
-        logprobs: nil,
-        stop: "\n"
-      })
+      {:ok, resp} =
+        OpenAI.Completions.create(client, %{
+          model: @model,
+          prompt: "Say this is a test",
+          max_tokens: 7,
+          temperature: 0,
+          top_p: 1,
+          n: 1,
+          stream: false,
+          logprobs: nil,
+          stop: "\n"
+        })
 
       assert resp == @create_completion_response
     end

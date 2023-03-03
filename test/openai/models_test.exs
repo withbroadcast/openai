@@ -20,7 +20,7 @@ defmodule OpenAI.ModelsTest do
         "object" => "model",
         "owned_by" => "openai",
         "permission" => []
-      },
+      }
     ],
     "object" => "list"
   }
@@ -68,11 +68,16 @@ defmodule OpenAI.ModelsTest do
 
   describe "delete/3" do
     test "deletes a model", %{bypass: bypass, client: client} do
-      Bypass.expect_once(bypass, "DELETE", "/v1/models/curieft-acmeco-2021-03-03-21-44-20", fn conn ->
-        conn
-        |> Plug.Conn.put_resp_content_type("application/json")
-        |> Plug.Conn.resp(200, Jason.encode!(@delete_response))
-      end)
+      Bypass.expect_once(
+        bypass,
+        "DELETE",
+        "/v1/models/curieft-acmeco-2021-03-03-21-44-20",
+        fn conn ->
+          conn
+          |> Plug.Conn.put_resp_content_type("application/json")
+          |> Plug.Conn.resp(200, Jason.encode!(@delete_response))
+        end
+      )
 
       {:ok, resp} = OpenAI.Models.delete(client, "curieft-acmeco-2021-03-03-21-44-20")
 
