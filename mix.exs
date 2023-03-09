@@ -1,6 +1,8 @@
 defmodule OpenAI.MixProject do
   use Mix.Project
 
+  @url "https://github.com/withbroadcast/openai"
+
   def project do
     [
       app: :openai,
@@ -8,7 +10,9 @@ defmodule OpenAI.MixProject do
       elixir: "~> 1.11",
       start_permanent: Mix.env() == :prod,
       elixirc_paths: elixirc_paths(Mix.env()),
-      deps: deps()
+      description: "Elixir client for OpenAI API",
+      deps: deps(),
+      package: package(),
     ]
   end
 
@@ -22,9 +26,19 @@ defmodule OpenAI.MixProject do
   defp elixirc_paths(:test), do: ["lib", "test/support"]
   defp elixirc_paths(_), do: ["lib"]
 
+  defp package do
+    [
+      name: "openai_client",
+      maintainers: ["Connor Jacobsen"],
+      licenses: ["MIT"],
+      links: %{"GitHub" => @url, "Source" => @url}
+    ]
+  end
+
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      {:ex_doc, "~> 0.27", only: :dev, runtime: false},
       {:bypass, "~> 2.1", only: :test},
       {:jason, "~> 1.4"},
       {:hackney, "~> 1.10"},
