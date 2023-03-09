@@ -68,21 +68,25 @@ defmodule OpenAI.Client do
     ]
   end
 
+  @doc false
   @spec get(client(), url(), Keyword.t()) :: result()
   def get(client, url, opts \\ []) do
     Tesla.get(client, url, opts)
   end
 
+  @doc false
   @spec post(client(), url(), body(), Keyword.t()) :: result()
   def post(client, url, body, opts \\ []) do
     Tesla.post(client, url, body, opts)
   end
 
+  @doc false
   @spec delete(client(), url(), Keyword.t()) :: result()
   def delete(client, url, opts \\ []) do
     Tesla.delete(client, url, opts)
   end
 
+  @doc false
   @spec handle_response(result(), Keyword.t()) :: {:ok, body()} | {:error, term()}
   def handle_response(response, opts \\ [])
 
@@ -92,4 +96,16 @@ defmodule OpenAI.Client do
   def handle_response({:ok, %Tesla.Env{body: body}}, _opts), do: {:ok, body}
 
   def handle_response({:error, _reason} = err, _opts), do: err
+
+  @doc false
+  @spec with_stream_opts(map(), Keyword.t()) :: Keyword.t()
+  def with_stream_opts(params, opts \\ [])
+
+  def with_stream_opts(%{stream: true}, opts) do
+    # This looks weird, but is the format that Tesla requires in order to
+    # properly set the adapter options.
+    Keyword.put(opts, :opts, [adapter: [response: :stream]])
+  end
+
+  def with_stream_opts(_params, opts), do: opts
 end
