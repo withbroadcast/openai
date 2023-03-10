@@ -63,7 +63,7 @@ defmodule OpenAI.Client do
 
   defp auth_headers(api_key, organization) do
     [
-      {"authorization", api_key},
+      {"authorization", "Bearer #{api_key}"},
       {"openai-organization", organization}
     ]
   end
@@ -104,7 +104,7 @@ defmodule OpenAI.Client do
   def with_stream_opts(%{stream: true}, opts) do
     # This looks weird, but is the format that Tesla requires in order to
     # properly set the adapter options.
-    Keyword.put(opts, :opts, [adapter: [response: :stream]])
+    Keyword.put(opts, :opts, adapter: [response: :stream])
   end
 
   def with_stream_opts(_params, opts), do: opts
