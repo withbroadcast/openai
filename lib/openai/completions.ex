@@ -32,7 +32,7 @@ defmodule OpenAI.Completions do
   """
   @spec create(Client.t(), create_params(), Keyword.t()) :: Client.result()
   def create(client, params, opts \\ []) do
-    # TODO: handle streaming responses!
+    opts = Client.with_stream_opts(params, opts)
 
     client
     |> Client.post("/v1/completions", params, opts)
