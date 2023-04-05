@@ -6,7 +6,7 @@ defmodule OpenAI.Client do
   @type client :: Tesla.Client.t()
   @type url :: Tesla.Env.url()
   @type body :: Tesla.Env.body()
-  @type result :: Tesla.Env.result()
+  @type result :: {:ok, body() | function()} | {:error, term()}
 
   @type new_client_opt ::
           {:api_key, String.t()}
