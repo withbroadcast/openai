@@ -8,3 +8,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## v0.2.0
 
 - Swapped out Hackney as the Tesla adapter in favor of Mint
+- Support streaming responses in the Chat API

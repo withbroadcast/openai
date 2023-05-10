@@ -32,7 +32,7 @@ defmodule OpenAI.Chat do
   """
   @spec create_completion(Client.t(), create_completion_params(), Keyword.t()) :: Client.result()
   def create_completion(client, params, opts \\ []) do
-    # TODO: handle streaming responses!
+    opts = Client.with_stream_opts(params, opts)
 
     client
     |> Client.post("/v1/chat/completions", params, opts)
