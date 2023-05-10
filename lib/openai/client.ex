@@ -4,6 +4,7 @@ defmodule OpenAI.Client do
   @default_base_url "https://api.openai.com"
 
   @type client :: Tesla.Client.t()
+  @type t :: client()
   @type url :: Tesla.Env.url()
   @type body :: Tesla.Env.body()
   @type result :: {:ok, body() | function()} | {:error, term()}
