@@ -5,8 +5,8 @@ defmodule OpenAI.MixProject do
 
   def project do
     [
-      app: :openai,
-      version: "0.2.0",
+      app: :openai_client,
+      version: "0.2.1",
       elixir: "~> 1.11",
       start_permanent: Mix.env() == :prod,
       elixirc_paths: elixirc_paths(Mix.env()),
