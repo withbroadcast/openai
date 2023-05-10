@@ -19,7 +19,7 @@ end
 You can configure the client via `config.exs`:
 
 ```elixir
-config :openai,
+config :openai_client,
   api_key: "your-api-key",
   organization: "your-organization"
 ```

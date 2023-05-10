@@ -1,7 +1,7 @@
 defmodule OpenAI.Config do
   @moduledoc false
 
-  @app_name :openai
+  @app_name :openai_client
 
   @doc false
   def get(opts, key, default \\ nil) do
