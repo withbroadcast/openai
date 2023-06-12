@@ -9,7 +9,7 @@ Adding `openai` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:openai_client, "~> 0.2"}
+    {:openai_client, "~> 0.4"}
   ]
 end
 ```
