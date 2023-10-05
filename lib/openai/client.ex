@@ -2,6 +2,7 @@ defmodule OpenAI.Client do
   alias OpenAI.Config
 
   @default_base_url "https://api.openai.com"
+  @default_timeout 90_000
 
   @type client :: Tesla.Client.t()
   @type t :: client()
@@ -13,6 +14,7 @@ defmodule OpenAI.Client do
           {:api_key, String.t()}
           | {:base_url, String.t()}
           | {:organization, String.t()}
+          | {:timeout, integer()}
 
   @type new_client_opts :: [new_client_opt]
 
@@ -30,6 +32,7 @@ defmodule OpenAI.Client do
     base_url = Config.get(opts, :base_url, @default_base_url)
     api_key = fetch_config!(:api_key, opts)
     organization = fetch_config!(:organization, opts)
+    timeout = Config.get(opts, :timeout, @default_timeout)
 
     middleware = [
       {Tesla.Middleware.BaseUrl, base_url},
@@ -37,7 +40,7 @@ defmodule OpenAI.Client do
       {Tesla.Middleware.Headers, build_headers(api_key, organization)}
     ]
 
-    adapter = {Tesla.Adapter.Mint, [timeout: 30_000, mode: :passive]}
+    adapter = {Tesla.Adapter.Mint, [timeout: timeout]}
 
     Tesla.client(middleware, adapter)
   end
