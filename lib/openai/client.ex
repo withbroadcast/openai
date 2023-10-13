@@ -108,8 +108,12 @@ defmodule OpenAI.Client do
   def with_stream_opts(%{stream: true}, opts) do
     # This looks weird, but is the format that Tesla requires in order to
     # properly set the adapter options.
-    Keyword.put(opts, :opts, adapter: [body_as: :stream])
+    # The protocols is part of an open issue with Tesla where HTTP2 cannot upload more than 65535 bytes
+    Keyword.put(opts, :opts, adapter: [body_as: :stream, protocols: [:http1]])
   end
 
-  def with_stream_opts(_params, opts), do: opts
+  def with_stream_opts(_params, opts), do
+    # The protocols is part of an open issue with Tesla where HTTP2 cannot upload more than 65535 bytes
+    Keyword.put(opts, :opts, adapter: [protocols: [:http1]])
+  end
 end
