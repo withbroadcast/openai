@@ -40,7 +40,7 @@ defmodule OpenAI.Client do
       {Tesla.Middleware.Headers, build_headers(api_key, organization)}
     ]
 
-    adapter = {Tesla.Adapter.Mint, [timeout: timeout]}
+    adapter = {Tesla.Adapter.Mint, [timeout: timeout, mode: :passive]}
 
     Tesla.client(middleware, adapter)
   end
