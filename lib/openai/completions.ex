@@ -8,6 +8,30 @@ defmodule OpenAI.Completions do
 
   alias OpenAI.Client
 
+  @type response_format :: %{
+    required(:type) => String.t()
+  }
+
+  @type tool :: %{
+    required(:type) => String.t(),
+    required(:function) => tool_function()
+  }
+
+  @type tool_function :: %{
+    required(:name) => String.t(),
+    optional(:description) => String.t(),
+    optional(:parameters) => map()
+  }
+
+  @type tool_choice :: %{
+    required(:type) => String.t(),
+    required(:function) => tool_function()
+  }
+
+  @type tool_choice_function :: %{
+    required(:name) => String.t()
+  }
+
   @type create_params :: %{
           required(:model) => String.t(),
           optional(:prompt) => String.t() | [String.t()],
@@ -24,6 +48,9 @@ defmodule OpenAI.Completions do
           optional(:frequency_penalty) => float(),
           optional(:best_of) => integer(),
           optional(:logit_bias) => %{String.t() => float()},
+          optional(:response_format) => response_format(),
+          optional(:tools) => [tool()],
+          optional(:tool_choice) => String.t() | tool_choice(),
           optional(:user) => String.t()
         }
 

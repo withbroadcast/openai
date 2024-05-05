@@ -1,12 +1,13 @@
 defmodule OpenAI.MixProject do
   use Mix.Project
 
+  @version "0.5.1"
   @url "https://github.com/withbroadcast/openai"
 
   def project do
     [
       app: :openai_client,
-      version: "0.5.0",
+      version: @version,
       elixir: "~> 1.11",
       start_permanent: Mix.env() == :prod,
       elixirc_paths: elixirc_paths(Mix.env()),
