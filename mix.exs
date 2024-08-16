@@ -1,7 +1,7 @@
 defmodule OpenAI.MixProject do
   use Mix.Project
 
-  @version "0.5.2"
+  @version "0.5.3"
   @url "https://github.com/withbroadcast/openai"
 
   def project do

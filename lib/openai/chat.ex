@@ -13,7 +13,8 @@ defmodule OpenAI.Chat do
         }
 
   @type response_format :: %{
-    required(:type) => String.t()
+    required(:type) => String.t(),
+    optional(:json_schema) => map()
   }
 
   @type tool :: %{
